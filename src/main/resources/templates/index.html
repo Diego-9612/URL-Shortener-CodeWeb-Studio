@@ -19,6 +19,7 @@
                     class="w-40 p-4 text-lg text-white bg-blue-500 rounded-md shadow-sm hover:bg-blue-600 focus:ring-2 focus:ring-blue-500 focus:outline-none">
                 Enviar
             </button>
+            <p th:if="${shortUrl}" th:text="${shortUrl}" class="text-green-600 mt-4"></p>
         </form>
     </div>
 </div>
