@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title th:text="${title}">CodeWeb Studio Url Shortener List</title>
+    <style>
+
+
+    </style>
+</head>
+<body class="bg-gradient flex items-center justify-center min-h-screen">
+<div class="container mx-auto px-4">
+    <h1 class="text-4xl font-bold text-center mb-6 text-gray-800">CODEWEB STUDIO ACORTADOR DE LINKS</h1>
+    <div class="bg-white shadow-md rounded-lg overflow-hidden">
+        <!-- Tabla -->
+        <div class="overflow-x-auto max-h-[70vh]">
+            <table class="min-w-full bg-white border border-gray-200 rounded-lg">
+                <thead class="bg-gray-200 border-b sticky top-0">
+                <tr>
+                    <th class="text-left py-3 px-4 text-gray-700 font-semibold">ID</th>
+                    <th class="text-left py-3 px-4 text-gray-700 font-semibold">Código URL</th>
+                    <th class="text-left py-3 px-4 text-gray-700 font-semibold">URL Original</th>
+                    <th class="text-left py-3 px-4 text-gray-700 font-semibold">Clicks</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="item: ${resources}" class="border-b hover:bg-gray-50">
+                    <td th:text="${item.id}" class="py-3 px-4 text-gray-600"></td>
+                    <td th:text="${item.shortUrl}" class="py-3 px-4 text-gray-600"></td>
+                    <td th:text="${item.originalUrl}" class="py-3 px-4 text-gray-600"></td>
+                    <td th:text="0" class="py-3 px-4 text-gray-600"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- Controles de paginación -->
+        <div class="flex justify-between items-center p-4 border-t bg-gray-100">
+            <button
+                    th:if="${page > 1}"
+                    th:href="@{/resources?page=${page - 1}}"
+                    class="px-4 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400">
+                Antes
+            </button>
+            <div class="text-gray-700">
+                Página <span class="font-semibold" th:text="${page}">1</span> de <span class="font-semibold" th:text="${totalPages}">2</span>
+            </div>
+            <button
+                    th:if="${page < totalPages}"
+                    th:href="@{/resources?page=${page + 1}}"
+                    class="px-4 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400">
+                Siguiente
+            </button>
+        </div>
+    </div>
+</div>
+</body>
+</html>
