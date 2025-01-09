@@ -2,6 +2,7 @@ package com.codeweb_studio.urlshortener.controllers;
 
 import com.codeweb_studio.urlshortener.services.ResourceResolver;
 import com.codeweb_studio.urlshortener.services.ShortCodeGenerator;
+import com.codeweb_studio.urlshortener.services.TrackingService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,7 @@ public class RootController {
 
     private final ShortCodeGenerator generator;
     private final ResourceResolver resolver;
+    private final TrackingService trackingService;
 
     @RequestMapping
     public String index() {
@@ -28,6 +30,7 @@ public class RootController {
     @GetMapping("/{shortCode}")
     public RedirectView resolve(@PathVariable String shortCode) {
         var resource = resolver.resolveShortCode(shortCode);
+        trackingService.trackClick(resource);
         return new RedirectView(resource.getOriginalUrl());
     }
 }

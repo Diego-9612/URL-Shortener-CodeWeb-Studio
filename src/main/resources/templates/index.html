@@ -4,25 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title th:text="${title}">Thymeleaf Example</title>
+    <title th:text="${title}">Acortador de Links</title>
 </head>
-<body class="bg-gray-100 flex items-center justify-center h-screen">
-<div class="text-center">
-    <h1 class="text-4xl font-bold mb-6">CODEWEB STUDIO ACORTADOR DE LINKS</h1>
-    <div class="flex items-center space-x-4 justify-center">
-        <!-- El formulario necesita acción para procesar datos -->
-        <form th:action="@{/shorten}" method="POST"> <!-- Asegúrate de definir una acción para el formulario -->
-            <input type="url" name="url" placeholder="Ingresa la url para acortar"
-                   class="w-96 p-4 text-lg border rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none mb-4"/>
+<body class="bg-gray-100 h-screen flex flex-col">
+<!-- Encabezado -->
+<header class="bg-white shadow-md py-4">
+    <h1 class="text-4xl font-bold text-center text-blue-900">CODEWEB STUDIO ACORTADOR DE LINKS</h1>
+</header>
 
-            <button type="submit"
-                    class="w-40 p-4 text-lg text-white bg-blue-500 rounded-md shadow-sm hover:bg-blue-600 focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                Enviar
-            </button>
-            <p th:if="${shortUrl}" th:text="${shortUrl}" class="text-green-600 mt-4"></p>
-        </form>
-    </div>
-</div>
+<!-- Contenido central -->
+<main class="flex-grow flex flex-col items-center justify-center">
+    <p class="text-xl text-blue-900 mb-6">Acorta tus enlaces de manera rápida y sencilla.</p>
+    <form th:action="@{/shorten}" method="POST" class="w-full max-w-md flex flex-col items-center">
+        <input
+                type="url"
+                name="url"
+                placeholder="Ingresa la URL para acortar"
+                class="w-full p-4 text-lg border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none mb-4"
+        />
+        <button
+                type="submit"
+                class="w-40 p-4 text-lg text-white bg-blue-500 rounded-md shadow-sm hover:bg-blue-600 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none"
+        >
+            Enviar
+        </button>
+        <p th:if="${shortUrl}" th:text="${shortUrl}" class="text-green-600 mt-4"></p>
+    </form>
+</main>
 </body>
 </html>
+
 
