@@ -24,4 +24,6 @@ public class TrackingEntity {
     private String ip;
 
     private String userAgent;
+
+    private String referer;
 }
