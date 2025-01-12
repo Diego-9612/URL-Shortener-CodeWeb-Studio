@@ -4,21 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title th:text="${title}">Lista de URLs Acortadas</title>
+    <title th:text="${title}">Acortador de Links</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Concert+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="@{/css/style.css}">
 </head>
 <body class="bg-gray-50 h-screen flex flex-col">
 <!-- Encabezado -->
-<header class="bg-blue-800 py-6 shadow-md">
-    <h1 class="text-3xl font-bold text-center text-white">CODEWEB STUDIO ACORTADOR DE LINKS</h1>
+<header class="bg-[#002242] py-5 sticky top-0 z-50 text-[#70dffa] transition-all duration-300 ease-in-out">
+    <div class="container mx-auto flex items-center justify-between px-4 lg:px-16">
+        <div class="flex items-center hover:scale-105 transform">
+            <span class="text-2xl font-extrabold tracking-wider">CODEWEB STUDIO</span>
+        </div>
+        <nav class="hidden md:flex items-center space-x-8">
+            <a href="/index" class="text-[#70dffa] hover:text-white">Inicio</a>
+            <a href="/acortar" class="text-[#70dffa] hover:text-white">Acortar URL</a>
+            <a href="#enlaces" class="text-[#70dffa] hover:text-white">Mis Enlaces</a>
+            <a href="#contacto" class="text-[#70dffa] hover:text-white">Contacto</a>
+        </nav>
+    </div>
 </header>
 
 <!-- Contenido central -->
 <main class="flex-grow flex flex-col items-center justify-center p-4">
-    <div class="w-full max-w-3xl bg-white shadow-lg rounded-lg overflow-hidden">
-        <!-- Tabla -->
+    <div class="w-full max-w-3xl bg-[#002242] text-[#70dffa] shadow-lg rounded-lg overflow-hidden p-6">
+        <h1 class="text-2xl font-bold mb-4">Lista de URLs Acortadas</h1>
         <div class="overflow-x-auto max-h-[60vh]">
-            <table class="min-w-full bg-blue-50 border border-blue-200 rounded-lg">
-                <thead class="bg-blue-600 text-white">
+            <table class="min-w-full bg-[#70dffa] text-[#002242] rounded-lg">
+                <thead class="bg-[#002242] text-[#70dffa]">
                 <tr>
                     <th class="text-left py-3 px-4 font-semibold">ID</th>
                     <th class="text-left py-3 px-4 font-semibold">Código URL</th>
@@ -27,17 +42,45 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="item: ${resourceList}" class="border-b hover:bg-blue-100">
-                    <td th:text="${item.resource.id}" class="py-3 px-4 text-gray-700"></td>
-                    <td th:text="${item.resource.shortUrl}" class="py-3 px-4 text-blue-800 font-semibold"></td>
-                    <td th:text="${item.resource.originalUrl}" class="py-3 px-4 text-gray-700 truncate"></td>
-                    <td th:text="${item.clickStatistics.clickCount}" class="py-3 px-4 text-gray-700 text-center"></td>
+                <tr th:each="item: ${resourceList}" class="border-b hover:bg-[#70dffa] hover:text-[#002242]">
+                    <td th:text="${item.resource.id}" class="py-3 px-4"></td>
+                    <td th:text="${item.resource.shortUrl}" class="py-3 px-4 font-semibold"></td>
+                    <td th:text="${item.resource.originalUrl}" class="py-3 px-4 truncate"></td>
+                    <td th:text="${item.clickStatistics.clickCount}" class="py-3 px-4 text-center"></td>
                 </tr>
                 </tbody>
             </table>
         </div>
     </div>
 </main>
+
+<!-- Nueva sección -->
+<section class="bg-[#70dffa] text-[#002242] py-12">
+    <div class="container mx-auto px-4 lg:px-16">
+        <h2 class="text-3xl font-bold text-center mb-6">Sobre Nosotros</h2>
+        <p class="text-lg text-center max-w-4xl mx-auto">
+            En CODEWEB STUDIO nos especializamos en ofrecer soluciones digitales personalizadas. Desde el desarrollo de aplicaciones web hasta sistemas empresariales, nuestro equipo está dedicado a impulsar la presencia digital de tu negocio.
+        </p>
+        <div class="flex justify-center mt-8">
+            <a href="#contacto" class="bg-[#002242] text-[#70dffa] px-6 py-3 rounded-lg hover:bg-white hover:text-[#002242] transition">
+                Contáctanos
+            </a>
+        </div>
+    </div>
+</section>
+
+<footer class="bg-[#002242] py-8">
+    <div class="container mx-auto px-4 lg:px-16 flex flex-col md:flex-row items-center justify-between">
+        <div class="flex items-center space-x-3">
+            <span class="text-xl font-extrabold text-[#70dffa]">CODEWEB STUDIO</span>
+            <span class="text-xs md:text-sm text-white">© 2025 Codeweb Studio | Soluciones digitales personalizadas</span>
+        </div>
+        <div class="flex space-x-6 mt-4 md:mt-0 md:ml-auto">
+            <a href="#" class="text-[#70dffa] hover:text-white">Facebook</a>
+            <a href="#" class="text-[#70dffa] hover:text-white">LinkedIn</a>
+        </div>
+    </div>
+</footer>
 </body>
 </html>
 

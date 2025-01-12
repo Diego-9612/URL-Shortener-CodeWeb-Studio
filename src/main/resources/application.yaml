@@ -18,6 +18,9 @@ spring:
       WRITE_DATES_AS_TIMESTAMPS: false
     time-zone: UTC
 
+  resources:
+    static-locations: classpath:/static/
+
 
 
 

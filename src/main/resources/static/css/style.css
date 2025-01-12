@@ -1,0 +1,27 @@
+/* Clase personalizada para aplicar color con opacidad */
+.bg-custom {
+    background-color: rgba(0, 34, 66, 0.95);
+}
+
+@media screen and (min-width: 750px) {
+
+    .header{
+        padding: 10px 0;
+        animation:  header-movement both;
+        animation-timeline: scroll();
+        animation-range: 10px 100px;
+    }
+
+}
+
+@keyframes header-movement{
+    from{
+        padding: 20px 0;
+    }
+
+    to{
+        padding: 5px 0;
+        background-color: rgba(0, 34, 66, 0.6);
+        font-size: 0.9rem;
+    }
+}

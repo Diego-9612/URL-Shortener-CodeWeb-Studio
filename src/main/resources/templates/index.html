@@ -5,33 +5,175 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <title th:text="${title}">Acortador de Links</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Concert+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="@{/css/style.css}">
 </head>
-<body class="bg-gray-100 h-screen flex flex-col">
+<body class="bg-[#ffffff] h-screen flex flex-col">
 <!-- Encabezado -->
-<header class="bg-white shadow-md py-4">
-    <h1 class="text-4xl font-bold text-center text-blue-900">CODEWEB STUDIO ACORTADOR DE LINKS</h1>
+<header class="bg-[#002242]  py-5 sticky top-0 z-50 text-[#70dffa] transition-all duration-300 ease-in-out header">
+    <div class="container mx-auto flex items-center justify-between px-4 lg:px-16">
+        <!-- Logo -->
+        <div class="flex items-center hover:scale-105 transform">
+                <span class="text-2xl font-extrabold tracking-wider">
+                    CODEWEB STUDIO
+                </span>
+        </div>
+        <!-- Menú Hamburguesa -->
+        <button
+                class="block md:hidden focus:outline-none"
+                id="menu-button"
+                aria-expanded="false"
+                aria-label="Abrir menú">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+            </svg>
+        </button>
+        <!-- Navegación -->
+        <nav
+                class="hidden md:flex flex-col md:flex-row md:items-center md:space-x-8 absolute md:static top-16 left-0 w-full md:w-auto bg-[#002242] md:bg-transparent z-40 hover:scale-105 transform"
+                id="menu">
+            <ul class="flex flex-col py-6 gap-2 md:flex-row items-center font-normal md:space-x-8 md:py-0 text-sm">
+                <li>
+                    <a href="#como-funciona" class="block py-2 px-4 relative overflow-hidden rounded-2xl group transition-all duration-[1000ms]">
+                        <span class="absolute inset-0 bg-[#70dffa] transition-transform duration-[1000ms] transform scale-y-0 group-hover:scale-y-100 group-hover:translate-y-0 origin-bottom h-full w-full"></span>
+                        <span class="relative z-10 group-hover:text-[#002242] transition-colors duration-[1000ms]">Inicio</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#acortar" class="block py-2 px-4 relative overflow-hidden rounded-2xl group transition-all duration-[1000ms]">
+                        <span class="absolute inset-0 bg-[#70dffa] transition-transform duration-[1000ms] transform scale-y-0 group-hover:scale-y-100 group-hover:translate-y-0 origin-bottom h-full w-full"></span>
+                        <span class="relative z-10 group-hover:text-[#002242] transition-colors duration-[1000ms]">Acortar URL</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/list" class="block py-2 px-4 relative overflow-hidden rounded-2xl group transition-all duration-[1000ms]">
+                        <span class="absolute inset-0 bg-[#70dffa] transition-transform duration-[1000ms] transform scale-y-0 group-hover:scale-y-100 group-hover:translate-y-0 origin-bottom h-full w-full"></span>
+                        <span class="relative z-10 group-hover:text-[#002242] transition-colors duration-[1000ms]">Mis Enlaces</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#redes" class="block py-2 px-4 relative overflow-hidden rounded-2xl group transition-all duration-[1000ms]">
+                        <span class="absolute inset-0 bg-[#70dffa] transition-transform duration-[1000ms] transform scale-y-0 group-hover:scale-y-100 group-hover:translate-y-0 origin-bottom h-full w-full"></span>
+                        <span class="relative z-10 group-hover:text-[#002242] transition-colors duration-[1000ms]">Contacto</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
 </header>
 
+<!-- Sección: ¿Cómo funciona? -->
+<section id="como-funciona" class="bg-[#ecfcff] py-12 mt-16 mb-16 mx-12 rounded-2xl hover:scale-105 transform">
+    <div class="container mx-auto px-6 lg:px-16 text-center">
+        <h2 class="text-3xl text-[#002242] mb-8 font-extrabold">¿Cómo funciona?</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="p-8 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 ease-in-out font-normal">
+                <h3 class="text-lg text-[#002242] mb-3 font-semibold">1. Ingresa la URL</h3>
+                <p class="text-sm text-gray-600">Escribe el enlace que quieres acortar en el formulario.</p>
+            </div>
+            <div class="p-8 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 ease-in-out">
+                <h3 class="text-lg text-[#002242] mb-3 font-semibold">2. Haz click en enviar</h3>
+                <p class="text-sm text-gray-600">Procesaremos tu enlace al instante.</p>
+            </div>
+            <div class="p-8 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 ease-in-out">
+                <h3 class="text-lg text-[#002242] mb-3 font-semibold">3. Copia y comparte</h3>
+                <p class="text-sm text-gray-600 font-normal">Recibe un enlace corto listo para usar.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
 <!-- Contenido central -->
-<main class="flex-grow flex flex-col items-center justify-center">
-    <p class="text-xl text-blue-900 mb-6">Acorta tus enlaces de manera rápida y sencilla.</p>
-    <form th:action="@{/shorten}" method="POST" class="w-full max-w-md flex flex-col items-center">
-        <input
-                type="url"
-                name="url"
-                placeholder="Ingresa la URL para acortar"
-                class="w-full p-4 text-lg border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none mb-4"
-        />
-        <button
-                type="submit"
-                class="w-40 p-4 text-lg text-white bg-blue-500 rounded-md shadow-sm hover:bg-blue-600 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none"
-        >
-            Enviar
-        </button>
-        <p th:if="${shortUrl}" th:text="${shortUrl}" class="text-green-600 mt-4"></p>
-    </form>
+<main id="acortar" class="flex-grow flex flex-col items-center justify-center px-6 mt-4 mb-16 mx-12 hover:scale-105 transform">
+    <div class="bg-[#002242] p-10 rounded-3xl shadow-xl w-full max-w-lg">
+        <h1 class="text-2xl font-normal text-[#70dffa] text-center mb-6">Acorta tus enlaces</h1>
+        <p class="text-sm  font-light text-[#ecfcff] text-center mb-8">Rápido y sencillo, con un click.</p>
+        <form th:action="@{/shorten}" method="POST" class="flex flex-col space-y-6">
+            <input
+                    type="url"
+                    name="url"
+                    placeholder="Ingresa la URL para acortar"
+                    class="w-full p-4 font-normal text-xs border border-[#70dffa] rounded-lg shadow-sm focus:ring-2 focus:ring-[#70dffa] focus:outline-none hover:scale-105 transform"
+                    required
+                    aria-label="URL para acortar"
+            />
+            <button
+                    type="submit"
+                    class="w-full p-3 text-lg font-normal text-[#002242] bg-[#70dffa] rounded-lg hover:scale-105 transform focus:ring-2 focus:ring-whithe focus:ring-offset-2 focus:outline-none transition"
+            >
+                Enviar
+            </button>
+        </form>
+        <p th:if="${shortUrl}" th:text="${shortUrl}" class="text-green-600 mt-6 text-center font-medium"></p>
+    </div>
 </main>
+
+<footer class="bg-[#002242] py-8">
+    <div class="container mx-auto px-4 lg:px-16 flex flex-col md:flex-row items-center justify-between">
+        <!-- Logo y texto -->
+        <div class="flex items-center space-x-3">
+            <span class="text-xl font-extrabold text-[#70dffa]">CODEWEB STUDIO</span>
+            <span class="text-xs md:text-sm text-white font-light text-center md:text-left">
+                © 2025 Codeweb Studio | Soluciones digitales personalizadas
+            </span>
+        </div>
+
+        <!-- Iconos de redes sociales -->
+        <div class="flex space-x-6 mt-4 md:mt-0 md:ml-auto">
+
+            <a href="#" aria-label="Dale like en Facebook" class="text-[#1877F2] hover:text-[#145dbf] transition-colors duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82V14.705h-3.295V11.29h3.295V8.727c0-3.264 1.992-5.049 4.899-5.049 1.391 0 2.586.103 2.933.149v3.399h-2.012c-1.577 0-1.883.749-1.883 1.847v2.422h3.77l-.492 3.414h-3.278V24h6.425c.732 0 1.325-.593 1.325-1.324V1.325C24 .593 23.407 0 22.675 0z"/>
+                </svg>
+            </a>
+
+            <a href="#" aria-label="Conéctate en LinkedIn" class="text-[#0e76a8] hover:text-[#005983] transition-colors duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M22.23 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.2.79 24 1.77 24h20.46c.98 0 1.77-.8 1.77-1.73V1.73C24 .77 23.21 0 22.23 0zM7.12 20.47H3.58V9.36h3.54zm-1.77-12.6a2.05 2.05 0 110-4.1 2.05 2.05 0 010 4.1zm16.36 12.6h-3.54v-5.73c0-1.37-.49-2.31-1.7-2.31-.93 0-1.49.63-1.74 1.24-.09.22-.11.54-.11.86v5.93h-3.54s.05-9.63 0-10.64h3.54v1.51a3.5 3.5 0 013.19-1.75c2.33 0 4.08 1.51 4.08 4.75zm0 0z"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+</footer>
+
 </body>
+<!-- Script para el menú responsivo -->
+<script>
+    const menuButton = document.getElementById('menu-button');
+    const menu = document.getElementById('menu');
+
+    menuButton.addEventListener('click', () => {
+        const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+        menuButton.setAttribute('aria-expanded', !isExpanded);
+        menu.classList.toggle('hidden');
+    });
+</script>
+<script>
+    tailwind.config = {
+    theme: {
+        extend: {
+            fontFamily: {
+            sans: ['Concert One', 'cursive'],
+        },
+    },
+    },
+};
+</script>
 </html>
+
+
+
+
+
+
+
+
+
+
+
 
 
