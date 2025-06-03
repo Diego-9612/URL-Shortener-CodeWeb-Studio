@@ -4,10 +4,7 @@ Este proyecto es un servicio de acortamiento de URLs que permite convertir URLs 
 
 ## 🖼️ Vista Previa
 
-*Añade aquí una captura de pantalla del proyecto o una imagen representativa*
-
 ![URL](https://github.com/user-attachments/assets/f00df4c4-75a4-4155-98f2-d78f6803ade1)
-
 
 ## ✨ Características
 
@@ -21,7 +18,7 @@ Este proyecto es un servicio de acortamiento de URLs que permite convertir URLs 
 
 ✅ API REST para crear y gestionar enlaces cortos.
 
-🚀 Futuro: Métricas de clics y autenticación.
+✅ Métricas de clicks
 
 ## 🛠️ Tecnologías Utilizadas
 
